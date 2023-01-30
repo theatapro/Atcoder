@@ -1,0 +1,20 @@
+{
+	"files.associations": {
+		"iostream": "cpp",
+		"array": "cpp",
+		"deque": "cpp",
+		"map": "cpp",
+		"string": "cpp",
+		"string_view": "cpp",
+		"unordered_map": "cpp",
+		"vector": "cpp",
+		"ostream": "cpp",
+		"iomanip": "cpp",
+		"all": "cpp",
+		"dsu": "cpp",
+		"numeric": "cpp",
+		"iosfwd": "cpp",
+		"queue": "cpp"
+	},
+	"C_Cpp.errorSquiggles": "disabled"
+}

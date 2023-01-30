@@ -11,22 +11,33 @@ int	main(void)
 {
 	string S;
 	cin >> S;
-    set<char> al;
-
+    stack<set<char> > Y;
+	set<char> X;
+	
+	Y.push({});
     rep(i, 0, S.size())
     {
-        while(S.at(i) != ')')
-        {
-            al.insert(A.at(i));
-            if(al.count(A.at(i)))
-            {
-                cout << "No" << endl;
-                return(0);
-            }
-            i++;
-        }
+		if ('a' <= S[i] && S[i] <= 'z')
+		{
+			if (X.count(S[i]))
+			{
+				cout << "No" << endl;
+				return (0);
+			}
+			X.insert(S[i]);
+			Y.top().insert(S[i]);
+		}
+        else if (S[i] == '(')
+		{
+			Y.push({});
+		}
+		else
+		{
+			for (auto c: Y.top())	
+				X.erase(c);
+			Y.pop();
+		}
     }
-    
-
+	cout << "Yes" << endl;
 	return(0);
 }
