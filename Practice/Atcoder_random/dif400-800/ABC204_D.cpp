@@ -25,33 +25,32 @@ int main()
 {
     int N;
     cin >> N;
-	vector<int> time_vec(N);
-	int sum_oven_a = 0;
-	int sum_oven_b = 0;
+	vector<int> time_vec(N + 1);
+	int sum = 0;
 
-    rep(i, 0, N)
+	rep(i, 1, N + 1)
 	{
-		int T;
-		cin >> T;
-		time_vec[i] = T; 
-		if (N == 1)
+		cin >> time_vec[i];
+		sum += time_vec[i];
+	}
+
+	vector<vector<bool> > dp(N + 1, vector<bool>(sum + 1));
+	rep(i, 0, N + 1)
+		dp[i][0] = true;
+	rep(i, 1, N + 1)
+		rep(j, 1, sum + 1)
 		{
-			cout << T << endl;
+			if (j < time_vec[i])
+				dp[i][j] = dp[i - 1][j];
+			else
+				dp[i][j] = dp[i - 1][j - time_vec[i]] || dp[i - 1][j];
+		}
+	rep(i, sum / 2, sum + 1)
+		if (dp[N][i])
+		{
+			cout << max(i, sum - i) << endl;
 			return (0);
 		}
-	}
+	return (0);
 
-	sort(time_vec.begin(), time_vec.end());
-	reverse(time_vec.begin(), time_vec.end());
-
-	rep(i, 0, N)
-	{
-		if (sum_oven_a < sum_oven_b)
-			sum_oven_a += time_vec[i];
-		else
-			sum_oven_b += time_vec[i];
-	}
-
-	cout << max(sum_oven_a, sum_oven_b) << endl;
-	
 }
