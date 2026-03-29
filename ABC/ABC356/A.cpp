@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+// #include <atcoder/all>
+#define rep(i, l, r) for (int i = (l); i < (r); i++)
+#define repd(i, l, r) for (int i = (l); i >= (r); i--)
+#define all(a) (a).begin(), (a).end()
+template<typename T> inline bool chmax(T &a, T b) { return ((a < b) ? (a = b, true) : (false)); }
+template<typename T> inline bool chmin(T &a, T b) { return ((a > b) ? (a = b, true) : (false)); }
+ 
+typedef long long ll;
+const ll LINF = 1e18;
+const int INF = 1e9;
+
+using namespace std;
+using P = pair<int, int>;
+
+int	main(void)
+{	
+	int N,L,R;
+	cin >> N>> L>>R;
+	vector<int> C;
+	rep(i,L,R+1)
+		C.push_back(i);
+	reverse(C.begin(),C.end());
+	vector<int>ans;
+	rep(i,1,L)
+		ans.push_back(i);
+	rep(i,0,C.size())
+		ans.push_back(C[i]);
+	rep(i,R+1,N+1)
+		ans.push_back(i);
+	rep(i,0,N)
+		cout << ans[i] << " " ;
+	return(0);
+}

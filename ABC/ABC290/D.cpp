@@ -43,7 +43,7 @@ int	main(void)
 		if (D%N == 0)
 			ans = (D%N * (K - 1)%N)%N + (K-1)%N;
 		else if (my_gcd(N,D) != 1)
-			ans = (D%N * (K - 1)%N)%N + ((K-1)/(N/min(D%N, N - D%N)))%N;
+			ans = (D%N * (K - 1)%N)%N + ((K-1)/(N/my_gcd(N,D)))%N;
 		else
 			ans = (D%N * (K - 1)%N)%N;
 		cout << ans%N << endl;
